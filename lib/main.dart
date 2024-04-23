@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class Id extends StatelessWidget{
+class Id extends StatefulWidget{
+  @override
+  State<Id> createState() => _IdState();
+}
+
+class _IdState extends State<Id> {
+
+  int level = 0;
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -16,6 +24,16 @@ class Id extends StatelessWidget{
         title: Text('ID Card'),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level++;
+          });
+        },
+        backgroundColor: Colors.grey[800],
+        child: const Icon(Icons.add),
       ),
 
       body:
@@ -36,7 +54,7 @@ class Id extends StatelessWidget{
               thickness: 1.0,
             ),
             const Text(
-              'NAME',
+              'Name',
               style: TextStyle(
                 letterSpacing: 2.0,
                 color: Colors.grey,
@@ -66,9 +84,9 @@ class Id extends StatelessWidget{
             const SizedBox(
               height: 10.0,
             ),
-            const Text(
-              '10',
-              style: TextStyle(
+            Text(
+              '$level',
+              style: const TextStyle(
                 color: Colors.amberAccent,
                 letterSpacing: 2.0,
                 fontSize: 40.0,
